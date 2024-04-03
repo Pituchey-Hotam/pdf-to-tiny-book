@@ -7,7 +7,7 @@ from math import log2
 import threading
 
 from io import BytesIO
-from pocket_book import making_the_pdf
+from src.pocket_book import making_the_pdf
 from flask import Flask, render_template, request, redirect, send_file, url_for
 from pathlib import Path
 
@@ -454,12 +454,10 @@ def get_file(uuid):
         
 
 if __name__ == '__main__':
-
     # "192.168.154.195" - example of current IP that might change and required for testing on
     # other devices, "127.0.0.1" - self IP for basic coding
     # debug=True - only before production to make working easy
 
     # app.run(host="192.168.154.195", port=8000, debug=True)
     app.run(host="127.0.0.1", port=8000, debug=True)
-
     # pass

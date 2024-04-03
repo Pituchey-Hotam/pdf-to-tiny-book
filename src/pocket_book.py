@@ -8,7 +8,7 @@ from enum import Enum
 # from hebrew_numbers import int_to_gematria
 from PyPDF2 import PdfFileReader, PdfFileWriter
 
-import pdfbooklet_new as pdfbooklet_new
+import src.pdfbooklet_new as pdfbooklet_new
 from reportlab.lib.pagesizes import *
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfgen import canvas
@@ -313,12 +313,13 @@ def making_the_pdf(inputs, eng=0, page_Numbers=False, cutLines=True):
             paths.append(name_trash_file + "let.pdf")
 
         if pages_per_sheet == 2:
+            tf=trash_file
             path = old_path
             trash_file = path + file_name
         final_path = trash_file + "_merged.pdf"
         merge_pdfs(paths, output=final_path)
         for i in range((number_of_pages // notebook_len) + (number_of_pages % notebook_len > 0)):
-            os.remove(trash_file + str(i + 1) + "let.pdf")
+            os.remove(tf + str(i + 1) + "let.pdf")
         if pages_per_sheet > 2:
             split_Even_Odd(final_path, trash_file)
             os.remove(final_path)
@@ -407,11 +408,3 @@ def add_dashed_cut_line(file, numP):
 # ~~~~~~~~~~~~~~~~~
 #     main ♪♫♪
 # ~~~~~~~~~~~~~~~~~
-
-
-def main():
-    WEB_UI()
-
-
-if __name__ == "__main__":
-    main()
