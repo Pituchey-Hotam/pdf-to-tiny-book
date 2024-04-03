@@ -312,8 +312,8 @@ def making_the_pdf(inputs, eng=0, page_Numbers=False, cutLines=True):
             os.remove(name_trash_file + ".pdf")
             paths.append(name_trash_file + "let.pdf")
 
+        tf=trash_file
         if pages_per_sheet == 2:
-            tf=trash_file
             path = old_path
             trash_file = path + file_name
         final_path = trash_file + "_merged.pdf"
