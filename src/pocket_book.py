@@ -270,6 +270,8 @@ def making_the_pdf(inputs, eng=0, page_Numbers=False, cutLines=True):
         if number_of_pages < 64:
             if not notebook_len % 4 == 0:
                 notebook_len = number_of_pages + (4 - (number_of_pages % 4))
+            else:
+                notebook_len = number_of_pages
         paths = []
         if not bind_method == "s":
             notebook_len -= 2
@@ -312,7 +314,7 @@ def making_the_pdf(inputs, eng=0, page_Numbers=False, cutLines=True):
             os.remove(name_trash_file + ".pdf")
             paths.append(name_trash_file + "let.pdf")
 
-        tf=trash_file
+        tf = trash_file
         if pages_per_sheet == 2:
             path = old_path
             trash_file = path + file_name
@@ -403,7 +405,6 @@ def add_dashed_cut_line(file, numP):
         output_pdf.addPage(pdf.pages[i])  # Add the modified page to the output
     with open(file, "wb") as output:
         output_pdf.write(output)
-
 
 # ~~~~~~~~~~~~~~~~~
 #     main ♪♫♪
